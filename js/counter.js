@@ -51,4 +51,4 @@ function counter(element){
 	}
 }
 
-counter('.countdown');
+
