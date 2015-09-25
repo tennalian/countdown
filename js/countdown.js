@@ -1,7 +1,10 @@
-/* (c) 2015, Mariya Gnitetckaya. */
+/*
+countdown.js
+(c) 2015, Mariya Gnitetckaya.
+*/
 
  'use strict';
-function counter(element){
+function countdown(element){
 	if(document.querySelector(element) !== null){
 
 		var elements = document.querySelectorAll(element);
@@ -14,7 +17,7 @@ function counter(element){
 				var time = Date.parse(el.dataset.time);
 			}
 
-		 	function countdown() {
+		 	function counter() {
 	     		var amount =  time - Date.parse(new Date()),
 			        day = Math.floor(amount / 86400000),
 			        hours = Math.floor((amount / 3600000) % 24),
@@ -45,8 +48,8 @@ function counter(element){
 		        el.innerHTML = out;
 	        }
 
-			countdown();
-			var interval = setInterval(countdown,1000);
+			counter();
+			var interval = setInterval(counter,1000);
 		});
 	}
 }

@@ -5,13 +5,27 @@ Initialization
 ------------
 
 ```code
-<head>
-    <script src="js/counter.js"></script>
+    <script src="js/countdown.js"></script>
 
     <script>
-        counter('.countdown');
+        countdown('.countdown');
     </script>
-</head>
 ```
 
 
+Options
+------------
+
+Light template
+
+```code
+	<div class="countdown" data-style='light'></div>
+```
+
+Set time
+
+```code
+	<div class="countdown" data-time="Jan,30,2016 00:00:00"></div>
+```
+
+Styles on SCSS
