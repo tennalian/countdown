@@ -3,7 +3,7 @@ countdown.js
 (c) 2016, Mariya Gnitetckaya.
 */
 
-var countdown = (function(elements){
+var countdown = (function(args){
 	'use strict';
 	var timer = function(el){
 		var time;
@@ -64,6 +64,9 @@ var countdown = (function(elements){
 				if (typeof(elements) !== "object" ){
 					throw new SyntaxError("Wrong item");
 				}
+				if (arguments.length > 1){
+					throw new SyntaxError("Enter not more than one element");
+				}
 				return parseElements(elements);
 		    } catch (err) {
 		    	console.log(err.message);
@@ -73,6 +76,7 @@ var countdown = (function(elements){
 
 })();
 var items = document.querySelectorAll('.countdown');
+var one = document.querySelectorAll('.one');
 countdown.init(items);
 
 
