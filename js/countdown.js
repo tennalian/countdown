@@ -16,8 +16,8 @@ var countdown = (function(elements){
 		return time;
 	};
 
-	var counter = function(date, el){
- 		var amount =  +date - Date.parse(new Date()),
+	var counter = function(time, el){
+ 		var amount =  +time - Date.parse(new Date()),
 	        day = Math.floor(amount / 86400000),
 	        hours = Math.floor((amount / 3600000) % 24),
 	        mins = Math.floor((amount / 60000) % 60),
@@ -48,11 +48,10 @@ var countdown = (function(elements){
 
 	var parseElements = function(elements){
 		[].forEach.call(elements, function(el){
-			var date = timer(el);
-			var self = this;
-			counter(date, el);
+			var time = timer(el);
+			counter(time, el);
 			var interval = setInterval(function(){
-				counter(date, el);
+				counter(time, el);
 			},1000);
 			return interval;
 		});
