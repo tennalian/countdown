@@ -15,7 +15,6 @@ var countdown = (function(elements){
 		}
 		return time;
 	};
-
 	var counter = function(time, el){
  		var amount =  +time - Date.parse(new Date()),
 	        day = Math.floor(amount / 86400000),
@@ -58,7 +57,17 @@ var countdown = (function(elements){
 	}
 	return{
 		init: function(elements){
-	       return parseElements(elements);
+	       	try {
+		        if (elements === undefined) {
+				    throw new SyntaxError("Items are not found");
+				}
+				if (typeof(elements) !== "object" ){
+					throw new SyntaxError("Wrong item");
+				}
+				return parseElements(elements);
+		    } catch (err) {
+		    	console.log(err.message);
+		    }
 	    }
 	}
 
