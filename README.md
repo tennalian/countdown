@@ -8,7 +8,8 @@ Initialization
     <script src="js/countdown.js"></script>
 
     <script>
-        countdown('.countdown');
+        var items = document.querySelectorAll('.countdown');
+		countdown.init(items);
     </script>
 ```
 

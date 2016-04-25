@@ -75,8 +75,7 @@ var countdown = (function(args){
 	}
 
 })();
-var items = document.querySelectorAll('.countdown');
-countdown.init(items);
+
 
 
 
