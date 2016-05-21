@@ -1,4 +1,4 @@
-Countdown.js
+Countdown
 =======================
 
 Initialization
