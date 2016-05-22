@@ -19,7 +19,6 @@ var countdown = (function(args){
  		var amount =  +time - Date.parse(new Date()),
 	        day = Math.floor(amount / 86400000),
 	        hours = Math.floor((amount / 3600000) % 24),
-	        mins = Math.floor((amount / 60000) % 60),
 	        mins = Math.floor(new Date(amount).getMinutes()),
 	        secs = Math.floor(new Date(amount).getSeconds());
 	    var b = String(Math.floor(day)).split("");
