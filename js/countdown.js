@@ -74,7 +74,7 @@ var countdown = (function(args){
 				if (arguments.length > 1){
 					throw new SyntaxError("Enter not more than one element");
 				}
-				return parseElements(elements);
+				return _parseElements(elements);
 		    } catch (err) {
 		    	console.log(err.message);
 		    }
