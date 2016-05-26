@@ -33,18 +33,16 @@ var countdown = (function(args){
 			days += '<span>'+b[i]+'</span>';
 		}
 
-		var round = '<div class="round"><span></span><span></span></div>';
-
-		var daysDiv = '<div id="days">' + days + '</div>' + round,
-			hoursDiv = '<div id="hours">' + '<span>' + Math.floor(hours/10) + '</span><span>' + hours%10 + '</span>' + '</div>' + round,
-			minsDiv = '<div id="mins">' + '<span>' + Math.floor(mins/10) + '</span><span>' + mins%10 + '</span>' + '</div>' + round,
+		var daysDiv = '<div id="days">' + days + '</div>',
+			hoursDiv = '<div id="hours">' + '<span>' + Math.floor(hours/10) + '</span><span>' + hours%10 + '</span>' + '</div>',
+			minsDiv = '<div id="mins">' + '<span>' + Math.floor(mins/10) + '</span><span>' + mins%10 + '</span>' + '</div>',
 			secsDiv = '<div id="secs">' + '<span>' + Math.floor(secs/10) + '</span><span>' + secs%10 + '</span>' + '</div>';
 
 		if (amount < 0) {
         	var zero = '<span>'+0+'</span><span>'+0+'</span>';
-	        daysDiv = '<div id="days">' + zero + '</div>' + round,
-			hoursDiv = '<div id="hours">'+ zero + '</div>' + round,
-			minsDiv = '<div id="mins">' + zero + '</div>' + round,
+	        daysDiv = '<div id="days">' + zero + '</div>',
+			hoursDiv = '<div id="hours">'+ zero + '</div>',
+			minsDiv = '<div id="mins">' + zero + '</div>',
 			secsDiv = '<div id="secs">' + zero + '</div>';
  		}
         var out = daysDiv + hoursDiv + minsDiv + secsDiv ;
