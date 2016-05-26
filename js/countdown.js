@@ -5,17 +5,23 @@ countdown.js
 
 var countdown = (function(args){
 	'use strict';
-	var timer = function(el){
+	function _timer(el){
 		var time;
 		if (el.dataset.time == undefined) {
 			time = Date.parse(new Date()) + 3600 * 1000 * 24 * 5; //5 days
+		}
+		else if (el.dataset.time == '5min'){
+			time = Date.parse(new Date()) + 5 * 60 * 1000; //5 min
+		}
+		else if (el.dataset.time == '40min'){
+			time = Date.parse(new Date()) + 40 * 60 * 1000; //40 min
 		}
 		else{
 			time = Date.parse(el.dataset.time);
 		}
 		return time;
 	};
-	var counter = function(time, el){
+	function _counter(time, el){
  		var amount =  +time - Date.parse(new Date()),
 	        day = Math.floor(amount / 86400000),
 	        hours = Math.floor((amount / 3600000) % 24),
@@ -27,31 +33,33 @@ var countdown = (function(args){
 			days += '<span>'+b[i]+'</span>';
 		}
 
-		var daysDiv = '<div id="days">' + days + '</div>',
-			hoursDiv = '<div id="hours">' + '<span>' + Math.floor(hours/10) + '</span><span>' + hours%10 + '</span>' + '</div>',
-			minsDiv = '<div id="mins">' + '<span>' + Math.floor(mins/10) + '</span><span>' + mins%10 + '</span>' + '</div>',
+		var round = '<div class="round"><span></span><span></span></div>';
+
+		var daysDiv = '<div id="days">' + days + '</div>' + round,
+			hoursDiv = '<div id="hours">' + '<span>' + Math.floor(hours/10) + '</span><span>' + hours%10 + '</span>' + '</div>' + round,
+			minsDiv = '<div id="mins">' + '<span>' + Math.floor(mins/10) + '</span><span>' + mins%10 + '</span>' + '</div>' + round,
 			secsDiv = '<div id="secs">' + '<span>' + Math.floor(secs/10) + '</span><span>' + secs%10 + '</span>' + '</div>';
 
 		if (amount < 0) {
-        	clearInterval(interval);
         	var zero = '<span>'+0+'</span><span>'+0+'</span>';
-	        daysDiv = '<div id="days">' + zero + '</div>',
-			hoursDiv = '<div id="hours">'+ zero + '</div>',
-			minsDiv = '<div id="mins">' + zero + '</div>',
+	        daysDiv = '<div id="days">' + zero + '</div>' + round,
+			hoursDiv = '<div id="hours">'+ zero + '</div>' + round,
+			minsDiv = '<div id="mins">' + zero + '</div>' + round,
 			secsDiv = '<div id="secs">' + zero + '</div>';
  		}
         var out = daysDiv + hoursDiv + minsDiv + secsDiv ;
         el.innerHTML = out;
 	};
 
-	var parseElements = function(elements){
+	function _parseElements(elements){
 		[].forEach.call(elements, function(el){
-			var time = timer(el);
-			counter(time, el);
+			var time = _timer(el);
+			_counter(time, el);
 			var interval = setInterval(function(){
-				counter(time, el);
+				_counter(time, el);
 			},1000);
 			return interval;
+
 		});
 	}
 	return{
